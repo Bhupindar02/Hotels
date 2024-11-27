@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const db = require("./db");
-//testing git
+ 
 const bodyParser = require("body-parser");
 //  const person = require('./models/personSchema');
 app.use(bodyParser.json());

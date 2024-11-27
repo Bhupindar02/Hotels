@@ -1,14 +1,14 @@
 const express = require('express')
 const Router = express.Router()
 
-Router.get('/students',(req,res)=>{
+Router.get('/Students',(req,res)=>{
      const studentList = {
         Ramesh,Sures,vighnesh,Naresh
      }
      res.status(200).json(studentList)
 })
 //post endpoint for student
-Router.post('/students',async(req,res)=>{
+Router.post('/Students',async(req,res)=>{
     try{
          const input = req.body
          const newPerson = new Student(input)
