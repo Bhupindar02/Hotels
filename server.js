@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 const db = require("./db");
+require('dotenv').config();
  
 const bodyParser = require("body-parser");
 //  const person = require('./models/personSchema');
@@ -27,7 +28,10 @@ const menuRout = require("./routs/menuRouts");
 
 app.use("/", personRout);
 app.use("/menu", menuRout);
-app.listen(3001, () => {
+
+const PORT = process.env.PORT ||3000;
+
+app.listen( PORT, () => {
   console.log(` server listinig on 3001`);
 });
 
