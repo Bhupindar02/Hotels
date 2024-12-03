@@ -1,11 +1,11 @@
 const express = require("express");
 const route = express.Router();
-const Person = require("../models/personSchema");
+const person = require("../models/personSchema");
 
 route.post("/person", async (req, res) => {
   const data = req.body;
   try {
-    const newPerson = new Person(data);
+    const newPerson = new person(data);
 
     const responce = await newPerson.save();
     console.log("data has been saved");
@@ -19,7 +19,7 @@ route.post("/person", async (req, res) => {
 //person get method
 route.get("/person", async (req, res) => {
   try {
-    const personData = await Person.find();
+    const personData = await person.find();
     console.log("data fatched");
     res.status(200).json(personData);
   } catch (err) {
@@ -33,7 +33,7 @@ route.get("/person/:work", async (req, res) => {
   try {
     const workType = req.params.work; //work will extract from URL
     if (workType == "chef" || workType == "waiter" || workType == "manager") {
-      const responce = await Person.find({ work: workType });
+      const responce = await person.find({ work: workType });
       console.log("work params fetched");
       res.status(200).send(responce);
     } else {
@@ -51,7 +51,7 @@ route.put("/person/:ID", async (req, res) => {
     const PersonID = req.params.ID;
     const putPerson = req.body;
 
-    const responce = await Person.findByIdAndUpdate(PersonID, putPerson, {
+    const responce = await person.findByIdAndUpdate(PersonID, putPerson, {
       new: true,
       runValidators: true,
     });
@@ -69,7 +69,7 @@ route.put("/person/:ID", async (req, res) => {
 route.delete("/person/:ID", async (req, res) => {
   try {
     const PersonID = req.params.ID;
-    const responce = await Person.findByIdAndDelete(PersonID);
+    const responce = await person.findByIdAndDelete(PersonID);
     if (!responce) {
       return res.status(404).json({ error: "Person not found" });
     }

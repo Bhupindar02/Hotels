@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 //defining schema 
 const personSchema = new mongoose.Schema({
@@ -41,6 +42,10 @@ const personSchema = new mongoose.Schema({
 
 
 })
+  
+//hashed password ---> extract salt
+//enteredpassword + extracted salt -compair hashed password
+
 
 //creat person models
 const person = mongoose.model('employee',personSchema)

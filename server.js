@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const passport = require("./auth");
+const passport = require("./auth")
 
 const db = require("./db");
 require("dotenv").config();
@@ -21,11 +21,12 @@ const logRequest = (req, res, next) => {
 
 app.use(logRequest);
 
+//authentication logic
+
+
 app.use(passport.initialize());
 
 const Authenticate = passport.authenticate("local", { session: false });
-
-// fix db connection event listner not working
 
 app.get("/", Authenticate, (req, res) => {
   res.send("welcome to my hotel sir");
@@ -45,7 +46,7 @@ const menuRout = require("./routs/menuRouts");
 
 // app.use("/menu",logRequest, menuRout);  - can use only specific endpoints
 app.use("/menu", menuRout);
-app.use("/", personRout);
+app.use("/",Authenticate,personRout);
 
 app.listen(PORT, () => {
   console.log(` server listinig on 3002`);
