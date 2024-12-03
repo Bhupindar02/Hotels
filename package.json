@@ -9,5 +9,15 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "prompt-sync": "^4.2.0"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "hotels",
+  "version": "1.0.0",
+  "main": "auth.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
